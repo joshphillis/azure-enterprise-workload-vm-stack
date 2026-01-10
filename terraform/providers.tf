@@ -1,10 +1,10 @@
 terraform {
-  required_version = ">= 1.3.0"
+  required_version = ">= 1.5.0"
 
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 3.0"
+      version = "~> 4.0"
     }
   }
 
@@ -12,7 +12,7 @@ terraform {
     resource_group_name  = var.workload_state_rg
     storage_account_name = var.workload_state_sa
     container_name       = var.workload_state_container
-    key                  = "workload-vm-stack.tfstate"
+    key                  = var.workload_state_key
   }
 }
 
