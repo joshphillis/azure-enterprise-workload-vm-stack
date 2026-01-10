@@ -41,33 +41,38 @@ variable "workload_state_container" {
   description = "Container for workload Terraform state"
 }
 
+variable "workload_state_key" {
+  type        = string
+  description = "State file name for workload Terraform state"
+}
+
 ###############################
 # VM Configuration
 ###############################
 
 variable "windows_vm_name" {
-  type        = string
-  default     = "winvm01"
+  type    = string
+  default = "winvm01"
 }
 
 variable "linux_vm_name" {
-  type        = string
-  default     = "linuxvm01"
+  type    = string
+  default = "linuxvm01"
 }
 
 variable "windows_vm_size" {
-  type        = string
-  default     = "Standard_D2s_v3"
+  type    = string
+  default = "Standard_D2s_v3"
 }
 
 variable "linux_vm_size" {
-  type        = string
-  default     = "Standard_B2s"
+  type    = string
+  default = "Standard_B2s"
 }
 
 variable "vm_os_disk_type" {
-  type        = string
-  default     = "Standard_LRS"
+  type    = string
+  default = "Standard_LRS"
 }
 
 variable "vm_os_image" {
@@ -86,11 +91,16 @@ variable "vm_os_image" {
 }
 
 variable "admin_username" {
-  type        = string
-  default     = "localadmin"
+  type    = string
+  default = "localadmin"
 }
 
-variable "admin_password" {
+variable "linux_admin_ssh_public_key" {
+  type        = string
+  description = "SSH public key for Linux VM"
+}
+
+variable "windows_admin_password" {
   type        = string
   sensitive   = true
 }
@@ -101,4 +111,24 @@ variable "tags" {
     environment = "dev"
     owner       = "joshua"
   }
+}
+
+###############################
+# Networking
+###############################
+
+variable "workload_vnet_cidr" {
+  type = string
+}
+
+variable "workload_subnet_cidr" {
+  type = string
+}
+
+variable "hub_vnet_id" {
+  type = string
+}
+
+variable "hub_vnet_name" {
+  type = string
 }
